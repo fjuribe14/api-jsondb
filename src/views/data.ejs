@@ -1,0 +1,36 @@
+<% include layout/navbar %>
+
+<div class="row justify-content-center p-5 m-0">
+  <h1 class="w-100 text-center mb-5">Data</h1>
+  <table class="col-md-6 table table-hover text-center">
+    <thead class="text-capitalize bg-primary text-white">
+      <tr>
+        <th>name</th>
+        <th>email</th>
+        <th>age</th>
+        <th>sex</th>
+        <th>edit</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% Data.forEach((data)=>{ %>
+        <tr>
+        <td><%= data.name %></td>
+        <td><%= data.email %></td>
+        <td><%= data.age %></td>
+        <td><%= data.sex %></td>
+        <td>
+          <a href="/data/update/<%= data.id %>" class="btn btn-secondary p-1">
+            update
+          </a>
+          <a href="/data/delete/<%= data.id %>" class="btn btn-danger p-1">
+            delete
+          </a>
+        </td>
+      </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</div>
+
+<% include layout/footer %>
