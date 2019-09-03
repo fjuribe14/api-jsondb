@@ -8,14 +8,15 @@ const dataCtrl = {}
 const data_json = fs.readFileSync('src/db/data.json', 'utf-8')
 // parse json to arr
 let Data = JSON.parse(data_json)
-// parse json to xls
-const xls = json2xls(Data)
 
-dataCtrl.data = (req, res) => {
+dataCtrl.data = async (req, res) => {
+    // parse json to xls
+    const xls = json2xls(Data)
+    // write file
+    await fs.writeFileSync('src/public/data.xlsx', xls, 'binary')
     res.render('data.ejs', {
         Data
     })
-    fs.writeFileSync('src/public/data.xlsx', xls, 'binary')
 }
 
 dataCtrl.createData = (req, res) => {
