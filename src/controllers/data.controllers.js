@@ -15,7 +15,7 @@ dataCtrl.data = (req, res) => {
     res.render('data.ejs', {
         Data
     })
-    fs.writeFileSync('src/db/data.xlsx', xls, 'binary')
+    fs.writeFileSync('src/public/data.xlsx', xls, 'binary')
 }
 
 dataCtrl.createData = (req, res) => {
