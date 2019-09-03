@@ -12,10 +12,10 @@ let Data = JSON.parse(data_json)
 const xls = json2xls(Data)
 
 dataCtrl.data = (req, res) => {
-    fs.writeFileSync('src/db/data.xlsx', xls, 'binary')
     res.render('data.ejs', {
         Data
     })
+    fs.writeFileSync('src/db/data.xlsx', xls, 'binary')
 }
 
 dataCtrl.createData = (req, res) => {
