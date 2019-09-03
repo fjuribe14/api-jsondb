@@ -1,5 +1,6 @@
 const uuid = require('uuid/v4')
 const fs = require('fs')
+const json2xls = require('json2xls')
 
 const dataCtrl = {}
 
@@ -7,8 +8,11 @@ const dataCtrl = {}
 const data_json = fs.readFileSync('src/db/data.json', 'utf-8')
 // parse json to arr
 let Data = JSON.parse(data_json)
+// parse json to xls
+const xls = json2xls(Data)
 
 dataCtrl.data = (req, res) => {
+    fs.writeFileSync('src/db/data.xlsx', xls, 'binary')
     res.render('data.ejs', {
         Data
     })
